@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Convite Fora do Roteiro</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #fdf6e3;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 24px;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        input[type="text"], button {
+            padding: 12px;
+            font-size: 16px;
+            border-radius: 8px;
+        }
+
+        input[type="text"] {
+            border: 1px solid #ccc;
+        }
+
+        button {
+            border: none;
+            background-color: #1e90ff;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0f75d0;
+        }
+
+        .mensagem {
+            margin-top: 20px;
+            font-size: 16px;
+            color: #444;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>🎞️✨ Convite Fora do Roteiro ✨🎞️</h2>
+
+        <form method="post">
+            <p><b>
+                Você tem algo de cena favorita:<br>
+                aparece na minha mente sem aviso, com trilha sonora própria. 🎶<br><br>
+                Me diz... que tal a gente escrever um roteiro novo?<br>
+                Um encontro à meia-luz, poltronas lado a lado,<br>
+                minha mão “acidentalmente” procurando a sua... 🍿🤭<br><br>
+                O filme? Pode até ser ruim.<br>
+                Mas com você, até os créditos finais viram poesia. 💫<br><br>
+                Aceita sair comigo pro cinema nesse fim de semana?<br>
+                Prometo risos, olhares e talvez um beijo nos trailers. 😘
+            </b></p>
+
+            <label>Responda com "sim" ou "não":</label>
+            <input type="text" name="resposta" required>
+            <button type="submit">Enviar resposta</button>
+        </form>
+
+        {% if mensagem_final %}
+            <div class="mensagem">
+                <hr>
+                <p>{{ mensagem_final }}</p>
+            </div>
+        {% endif %}
+    </div>
+
+    {% if resposta == "sim" %}
+        <script>
+            window.open("/gerar-pdf", "_blank");
+        </script>
+    {% endif %}
+</body>
+</html>
